@@ -149,12 +149,3 @@ docker exec -it php php bin/console doctrine:fixtures:load
 | Parâmetro   | Tipo       | Descrição                                 |
 | :---------- | :--------- |:------------------------------------------|
 | `id`      | `integer` | **Obrigatório**. O ID do sócio cadastrada |
-
-## Considerações Finais
-O desafio de código foi, de fato, um grande desafio. Foi a primeira vez que trabalhei com Symfony — confesso que imaginei algo mais parecido com o Laravel, mas ele tem suas particularidades. Felizmente, a documentação foi uma grande aliada. Gastei um tempo precioso pensando em como melhorar algumas coisas, quando talvez o simples teria sido o suficiente.
-
-O frontend foi um capítulo à parte. Já faz bastante tempo que não mexo com Angular, e frontend nunca foi meu ponto forte. Achei que conseguiria resolver essa parte rapidamente, mas me enganei feio. Acabei travando em um problema de CORS e não consegui avançar.
-
-De qualquer forma, agradeço muito pelo desafio (pretendo continuar o projeto no GitHub) e pela oportunidade de codar um pouco para que vocês pudessem conhecer meu trabalho.
-
-Um grande abraço!
