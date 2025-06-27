@@ -1,0 +1,48 @@
+services:
+  php:
+    build:
+      context: ./docker/php
+    container_name: php
+    working_dir: /var/www/html
+    volumes:
+      - ./backend:/var/www/html
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx:stable
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./backend:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+
+  db:
+    image: postgres:15
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: symfony
+      POSTGRES_USER: symfony
+      POSTGRES_PASSWORD: symfony
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  angular:
+    build:
+      context: ./frontend
+    container_name: angular
+    working_dir: /app
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./frontend:/app
+    command: sh -c "npm install && npx ng serve --host 0.0.0.0 --proxy-config proxy.config.js"
+
+volumes:
+  pgdata:
